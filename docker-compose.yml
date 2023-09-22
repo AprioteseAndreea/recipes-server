@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: postgres:14.0
+    container_name: my_db
+    environment:
+      - POSTGRES_DB=recipesapp
+      - POSTGRES_USER=postgresql
+      - POSTGRES_PASSWORD=postgresql
+    ports:
+      - 5432:5432
