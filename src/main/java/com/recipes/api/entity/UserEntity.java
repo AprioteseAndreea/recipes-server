@@ -87,7 +87,7 @@ public class UserEntity implements Serializable {
     @Builder.Default
     private Boolean wantToSaveTime = false;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_cuisine",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -96,7 +96,7 @@ public class UserEntity implements Serializable {
     @ToString.Exclude
     private List<CuisineEntity> userCuisines;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_diet",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -105,7 +105,7 @@ public class UserEntity implements Serializable {
     @ToString.Exclude
     private List<DietEntity> userDiets;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_disliked_ingredient",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -116,9 +116,9 @@ public class UserEntity implements Serializable {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @ToString.Exclude
-    private List<UserCartEntity> userCartEntityList;
+    private List<UserIngredientEntity> userIngredientsList;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<UserRecommendation> userRecommendations;
 

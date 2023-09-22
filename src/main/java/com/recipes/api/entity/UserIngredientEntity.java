@@ -15,20 +15,21 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "user_cart", schema = "public", catalog = "recipesapp")
-public class UserCartEntity implements Serializable {
+@Table(name = "user_ingredient", schema = "public", catalog = "recipesapp")
+public class UserIngredientEntity implements Serializable {
 
-    // A composite primary key.
-    @EmbeddedId
-    private UserCartId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @ManyToOne
-    @MapsId("userId")
+    @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private UserEntity user;
 
     @ManyToOne
-    @MapsId("ingredientId")
+    @JoinColumn(name = "ingredient_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private IngredientEntity ingredient;
 

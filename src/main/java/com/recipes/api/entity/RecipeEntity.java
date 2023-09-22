@@ -54,7 +54,7 @@ public class RecipeEntity {
     @JoinColumn(name = "cuisine_id")
     private CuisineEntity cuisine;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "recipe_diet",
             joinColumns = @JoinColumn(name = "recipe_id", referencedColumnName = "id"),

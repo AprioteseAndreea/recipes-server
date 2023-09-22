@@ -41,5 +41,5 @@ public class IngredientEntity implements Serializable {
 
     @OneToMany(mappedBy = "ingredient", fetch = FetchType.LAZY)
     @ToString.Exclude
-    private List<UserCartEntity> ingredientCarts;
+    private List<UserIngredientEntity> ingredientCarts;
 }
