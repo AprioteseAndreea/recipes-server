@@ -1,5 +1,8 @@
 package com.recipes.api.dtos;
 
+import com.recipes.api.entity.IngredientEntity;
+import com.recipes.api.entity.RecipeEntity;
+import com.recipes.api.entity.UserEntity;
 import com.recipes.api.entity.enums.CookingLevel;
 import com.recipes.api.entity.enums.Gender;
 import com.recipes.api.entity.enums.PhysicalEffort;
@@ -35,11 +38,11 @@ public class UserDto {
 
     @Min(value = 70, message = "The height should not be less than 70 cm")
     @Max(value = 250, message = "The height not be greater than 250 cm")
-    private Double height;
+    private Integer height;
 
     @Min(value = 20, message = "The weight not be less than 20")
     @Max(value = 200, message = "The weight should not be greater than 200")
-    private Double weight;
+    private Integer weight;
 
     @PositiveOrZero
     private Double bms;
@@ -58,4 +61,48 @@ public class UserDto {
     private List<UserIngredientDto> userIngredients;
     private List<IngredientDto> userDislikedIngredients;
     private List<UserRecommendationDto> userRecommendations;
+
+    public static UserDto fromEntity(final UserEntity userEntity) {
+        return UserDto.builder()
+                .id(userEntity.getId())
+                .firstName(userEntity.getFirstName())
+                .lastName(userEntity.getLastName())
+                .email(userEntity.getEmail())
+                .age(userEntity.getAge())
+                .height(userEntity.getHeight())
+                .weight(userEntity.getWeight())
+                .bms(userEntity.getBms())
+                .gender(userEntity.getGender())
+                .cookingLevel(userEntity.getCookingLevel())
+                .physicalEffort(userEntity.getPhysicalEffort())
+                .wantToLearnNewSkills(userEntity.getWantToLearnNewSkills())
+                .wantToTryNewCuisines(userEntity.getWantToTryNewCuisines())
+                .wantToSaveMoney(userEntity.getWantToSaveMoney())
+                .wantToSaveTime(userEntity.getWantToSaveTime())
+                .userDiets(
+                        userEntity.getUserDiets()
+                                .stream()
+                                .map(DietDto::fromEntity)
+                                .toList())
+                .userCuisines(
+                        userEntity.getUserCuisines()
+                                .stream()
+                                .map(CuisineDto::fromEntity)
+                                .toList())
+                .userIngredients(
+                        userEntity.getUserIngredientsList()
+                        .stream()
+                        .map(UserIngredientDto::fromEntity)
+                        .toList())
+                .userDislikedIngredients(
+                        userEntity.getUserDislikedIngredients()
+                        .stream()
+                        .map(IngredientDto::fromEntity)
+                        .toList())
+                .userRecommendations(userEntity.getUserRecommendations()
+                        .stream()
+                        .map(UserRecommendationDto::fromEntity)
+                        .toList())
+                .build();
+    }
 }

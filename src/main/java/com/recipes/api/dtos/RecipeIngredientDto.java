@@ -14,15 +14,21 @@ import jakarta.validation.constraints.PositiveOrZero;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RecipeIngredientDto {
-    private Long id;
+
     private RecipeDto recipe;
-    private IngredientDto ingredientDto;
+    private IngredientDto ingredient;
+
     @PositiveOrZero
     private Double quantity;
     private UnitOfMeasure unitOfMeasure;
 
 
     public static RecipeIngredientDto fromEntity(final RecipeIngredientEntity recipeIngredientEntity){
-        return null;
+        return RecipeIngredientDto.builder()
+                .recipe(RecipeDto.fromEntity(recipeIngredientEntity.getRecipe()))
+                .ingredient(IngredientDto.fromEntity(recipeIngredientEntity.getIngredient()))
+                .quantity(recipeIngredientEntity.getQuantity())
+                .unitOfMeasure(recipeIngredientEntity.getUnitOfMeasure())
+                .build();
     }
 }

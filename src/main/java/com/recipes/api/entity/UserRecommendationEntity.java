@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Table(name = "user_recommendation", schema = "public", catalog = "recipesapp")
-public class UserRecommendation {
+public class UserRecommendationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

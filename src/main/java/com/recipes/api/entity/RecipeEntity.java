@@ -70,13 +70,13 @@ public class RecipeEntity {
 
     @OneToMany(mappedBy = "breakfastRecipeId", fetch = FetchType.LAZY)
     @ToString.Exclude
-    private List<UserRecommendation> userBreakfastRecommendations;
+    private List<UserRecommendationEntity> userBreakfastRecommendations;
 
     @OneToMany(mappedBy = "lunchRecipeId", fetch = FetchType.LAZY)
     @ToString.Exclude
-    private List<UserRecommendation> userLunchRecommendations;
+    private List<UserRecommendationEntity> userLunchRecommendations;
 
     @OneToMany(mappedBy = "dinnerRecipeId", fetch = FetchType.LAZY)
     @ToString.Exclude
-    private List<UserRecommendation> userDinnerRecommendations;
+    private List<UserRecommendationEntity> userDinnerRecommendations;
 }

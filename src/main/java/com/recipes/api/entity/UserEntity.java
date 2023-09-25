@@ -120,6 +120,6 @@ public class UserEntity implements Serializable {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @ToString.Exclude
-    private List<UserRecommendation> userRecommendations;
+    private List<UserRecommendationEntity> userRecommendations;
 
 }
