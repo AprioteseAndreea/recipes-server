@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RecipeDto {
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Ingredient name is mandatory")
     @Size(max = 100, message = "The maximum length is 100 characters")

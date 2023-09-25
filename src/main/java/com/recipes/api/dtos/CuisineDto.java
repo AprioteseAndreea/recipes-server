@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CuisineDto {
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Diet name is mandatory")
     @Size(max = 100, message = "The maximum length is 100 characters")

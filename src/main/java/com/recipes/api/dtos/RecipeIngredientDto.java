@@ -14,8 +14,6 @@ import jakarta.validation.constraints.PositiveOrZero;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RecipeIngredientDto {
-
-    private RecipeDto recipe;
     private IngredientDto ingredient;
 
     @PositiveOrZero
@@ -25,7 +23,6 @@ public class RecipeIngredientDto {
 
     public static RecipeIngredientDto fromEntity(final RecipeIngredientEntity recipeIngredientEntity){
         return RecipeIngredientDto.builder()
-                .recipe(RecipeDto.fromEntity(recipeIngredientEntity.getRecipe()))
                 .ingredient(IngredientDto.fromEntity(recipeIngredientEntity.getIngredient()))
                 .quantity(recipeIngredientEntity.getQuantity())
                 .unitOfMeasure(recipeIngredientEntity.getUnitOfMeasure())

@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRecommendationDto {
-    private Long id;
+    private Integer id;
     private UserDto user;
     private RecipeDto breakfastRecipe;
     private RecipeDto lunchRecipe;
@@ -34,5 +34,4 @@ public class UserRecommendationDto {
                 .dateTime(userRecommendation.getDateTime())
                 .build();
     }
-
 }

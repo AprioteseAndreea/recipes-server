@@ -15,7 +15,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 @NoArgsConstructor
 public class UserIngredientDto {
 
-    private Long id;
+    private Integer id;
     private UserDto user;
     private IngredientDto ingredient;
 

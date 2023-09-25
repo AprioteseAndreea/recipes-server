@@ -18,8 +18,8 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class RecipeIngredientId implements Serializable {
     @Column(name = "recipe_id")
-    private Long recipeId;
+    private Integer recipeId;
 
     @Column(name = "ingredient_id")
-    private Long ingredientId;
+    private Integer ingredientId;
 }

@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-    private Long id;
+    private Integer id;
 
     @Size(max = 35, message = "The maximum length is 100 characters")
     private String firstName;

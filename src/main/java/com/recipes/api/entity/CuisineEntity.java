@@ -16,7 +16,7 @@ public class CuisineEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     @Basic
     @Column(name = "name", length = 100)
