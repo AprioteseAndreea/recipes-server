@@ -1,9 +1,13 @@
 package com.recipes.api.service.implementations;
 
+import com.recipes.api.dtos.DietDto;
 import com.recipes.api.dtos.IngredientDto;
 import com.recipes.api.dtos.RecipeDto;
+import com.recipes.api.dtos.UserDto;
+import com.recipes.api.entity.UserEntity;
 import com.recipes.api.repository.RecipeRepository;
 import com.recipes.api.service.interfaces.RecipeService;
+import com.recipes.api.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;

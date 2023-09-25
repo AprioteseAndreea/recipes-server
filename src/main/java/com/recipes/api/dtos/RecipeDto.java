@@ -1,5 +1,6 @@
 package com.recipes.api.dtos;
 
+import com.recipes.api.entity.DietEntity;
 import com.recipes.api.entity.RecipeEntity;
 import com.recipes.api.entity.enums.CookingLevel;
 import jakarta.validation.constraints.NotBlank;
@@ -41,6 +42,8 @@ public class RecipeDto {
     private String cuisineName;
 
     private List<RecipeIngredientDto> ingredientDtoList;
+    private List<DietDto> recipeDiets;
+
 
     public static RecipeDto fromEntity(final RecipeEntity recipeEntity) {
         return RecipeDto.builder()
@@ -58,6 +61,12 @@ public class RecipeDto {
                                 .stream()
                                 .map(RecipeIngredientDto::fromEntity)
                                 .toList())
+                .recipeDiets(
+                        recipeEntity.getRecipeDiets()
+                                .stream()
+                                .map(DietDto::fromEntity)
+                                .toList()
+                )
                 .build();
     }
 }

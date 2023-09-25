@@ -16,7 +16,6 @@ import jakarta.validation.constraints.PositiveOrZero;
 public class UserIngredientDto {
 
     private Integer id;
-    private UserDto user;
     private IngredientDto ingredient;
 
     @PositiveOrZero
@@ -27,7 +26,6 @@ public class UserIngredientDto {
     public static UserIngredientDto fromEntity(final UserIngredientEntity userIngredientEntity){
         return UserIngredientDto.builder()
                 .id(userIngredientEntity.getId())
-                .user(UserDto.fromEntity(userIngredientEntity.getUser()))
                 .ingredient(IngredientDto.fromEntity(userIngredientEntity.getIngredient()))
                 .quantity(userIngredientEntity.getQuantity())
                 .unitOfMeasure(userIngredientEntity.getUnitOfMeasure())

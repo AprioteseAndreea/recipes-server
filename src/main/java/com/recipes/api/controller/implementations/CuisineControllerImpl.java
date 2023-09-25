@@ -31,4 +31,15 @@ public class CuisineControllerImpl implements CuisineController {
         HttpStatus status = ObjectUtils.isNotEmpty(cuisineDto) ? HttpStatus.OK : HttpStatus.NO_CONTENT;
         return new ResponseEntity<>(cuisineDto, status);
     }
+
+    @Override
+    public ResponseEntity<CuisineDto> addCuisine(CuisineDto cuisineDto){
+        cuisineDto.setId(null);
+        return new ResponseEntity<>(cuisineService.addCuisine(cuisineDto), HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<CuisineDto> editCuisine(CuisineDto cuisineDto) {
+        return new ResponseEntity<>(cuisineService.editCuisine(cuisineDto), HttpStatus.OK);
+    }
 }

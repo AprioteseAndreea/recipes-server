@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class UserRecommendationDto {
     private Integer id;
-    private UserDto user;
     private RecipeDto breakfastRecipe;
     private RecipeDto lunchRecipe;
     private RecipeDto dinnerRecipe;
@@ -27,7 +26,6 @@ public class UserRecommendationDto {
     public static UserRecommendationDto fromEntity(final UserRecommendationEntity userRecommendation) {
         return UserRecommendationDto.builder()
                 .id(userRecommendation.getId())
-                .user(UserDto.fromEntity(userRecommendation.getUser()))
                 .breakfastRecipe(RecipeDto.fromEntity(userRecommendation.getBreakfastRecipeId()))
                 .lunchRecipe(RecipeDto.fromEntity(userRecommendation.getLunchRecipeId()))
                 .dinnerRecipe(RecipeDto.fromEntity(userRecommendation.getDinnerRecipeId()))

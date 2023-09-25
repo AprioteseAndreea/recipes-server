@@ -1,6 +1,7 @@
 package com.recipes.api.controller.implementations;
 
 import com.recipes.api.controller.interfaces.RecipeController;
+import com.recipes.api.dtos.DietDto;
 import com.recipes.api.dtos.RecipeDto;
 import com.recipes.api.service.interfaces.RecipeService;
 import lombok.RequiredArgsConstructor;
