@@ -1,6 +1,5 @@
 package com.recipes.api.dtos;
 
-import com.recipes.api.entity.DietEntity;
 import com.recipes.api.entity.RecipeEntity;
 import com.recipes.api.entity.enums.CookingLevel;
 import jakarta.validation.constraints.NotBlank;

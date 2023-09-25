@@ -1,6 +1,5 @@
 package com.recipes.api.controller.interfaces;
 
-import com.recipes.api.dtos.CuisineDto;
 import com.recipes.api.dtos.DietDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

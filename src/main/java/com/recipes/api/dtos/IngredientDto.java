@@ -1,6 +1,5 @@
 package com.recipes.api.dtos;
 
-import com.recipes.api.entity.DietEntity;
 import com.recipes.api.entity.IngredientEntity;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

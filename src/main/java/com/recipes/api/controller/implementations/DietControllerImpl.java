@@ -1,9 +1,7 @@
 package com.recipes.api.controller.implementations;
 
 import com.recipes.api.controller.interfaces.DietController;
-import com.recipes.api.dtos.CuisineDto;
 import com.recipes.api.dtos.DietDto;
-import com.recipes.api.dtos.IngredientDto;
 import com.recipes.api.service.interfaces.DietService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;

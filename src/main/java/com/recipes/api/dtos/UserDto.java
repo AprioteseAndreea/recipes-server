@@ -1,7 +1,5 @@
 package com.recipes.api.dtos;
 
-import com.recipes.api.entity.IngredientEntity;
-import com.recipes.api.entity.RecipeEntity;
 import com.recipes.api.entity.UserEntity;
 import com.recipes.api.entity.enums.CookingLevel;
 import com.recipes.api.entity.enums.Gender;
