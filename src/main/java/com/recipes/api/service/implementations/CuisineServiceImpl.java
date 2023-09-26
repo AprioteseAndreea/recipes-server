@@ -10,7 +10,6 @@ import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 import static com.recipes.api.common.Constants.CUISINE_NOT_FOUND;
 
@@ -27,12 +26,11 @@ public class CuisineServiceImpl implements CuisineService {
     }
 
     @Override
-    public Optional<CuisineDto> getCuisineById(Integer id) {
-        return Optional
-                .ofNullable(cuisineRepository
-                        .findById(id)
-                        .map(CuisineDto::fromEntity)
-                        .orElseThrow(() -> new NotFoundException(String.format(CUISINE_NOT_FOUND, id))));
+    public CuisineDto getCuisineById(Integer id) {
+        return cuisineRepository
+                .findById(id)
+                .map(CuisineDto::fromEntity)
+                .orElseThrow(() -> new NotFoundException(String.format(CUISINE_NOT_FOUND, id)));
     }
 
 
