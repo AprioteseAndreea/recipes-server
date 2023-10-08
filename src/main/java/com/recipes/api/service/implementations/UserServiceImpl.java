@@ -1,12 +1,15 @@
 package com.recipes.api.service.implementations;
 
 import com.recipes.api.dtos.UserDto;
+import com.recipes.api.dtos.UserRecommendationDto;
 import com.recipes.api.exceptions.NotFoundException;
 import com.recipes.api.repository.UserRepository;
 import com.recipes.api.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 import static com.recipes.api.common.Constants.USER_NOT_FOUND;
 
@@ -28,4 +31,5 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserByEmail(String email) {
         return UserDto.fromEntity(userRepository.findByEmailIs(email));
     }
+
 }

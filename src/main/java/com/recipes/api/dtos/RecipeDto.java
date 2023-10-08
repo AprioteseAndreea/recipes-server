@@ -30,6 +30,9 @@ public class RecipeDto {
 
     private String instructions;
 
+    private String description;
+
+
     private String pictureUrl;
 
     @PositiveOrZero
@@ -51,6 +54,7 @@ public class RecipeDto {
                 .prepTime(recipeEntity.getPrepTime())
                 .cookingLevel(recipeEntity.getCookingLevel())
                 .instructions(recipeEntity.getInstructions())
+                .description(recipeEntity.getDescription())
                 .pictureUrl(recipeEntity.getPictureUrl())
                 .kcals(recipeEntity.getKcals())
                 .favourites(recipeEntity.getFavourites())

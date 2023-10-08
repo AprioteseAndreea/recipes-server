@@ -10,6 +10,8 @@ public final class Constants {
     public static final String INGREDIENT_NOT_FOUND = "Diet with id %s not found";
     public static final String RECIPE_NOT_FOUND = "Recipe with id %s not found";
     public static final String USER_NOT_FOUND = "User with id %s not found";
+    public static final String USER_RECOMMENDATION_NOT_FOUND = "User recommendations not found";
+
 
 
 }

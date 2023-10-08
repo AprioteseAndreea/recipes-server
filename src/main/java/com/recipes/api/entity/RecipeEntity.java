@@ -35,8 +35,12 @@ public class RecipeEntity {
     private CookingLevel cookingLevel;
 
     @Basic
-    @Column(name = "instructions")
+    @Column(name = "instructions", length = 2000)
     private String instructions;
+
+    @Basic
+    @Column(name = "description")
+    private String description;
 
     @Basic
     @Column(name = "picture_url")
