@@ -5,5 +5,6 @@ public enum PhysicalEffort {
     SLIGHTLY_ACTIVE,
     MODERATELY_ACTIVE,
     VERY_ACTIVE,
-    SUPER_ACTIVE
+    SUPER_ACTIVE,
+    UNKNOWN
 }
