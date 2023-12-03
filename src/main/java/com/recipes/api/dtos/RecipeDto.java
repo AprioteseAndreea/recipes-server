@@ -57,7 +57,6 @@ public class RecipeDto {
                 .description(recipeEntity.getDescription())
                 .pictureUrl(recipeEntity.getPictureUrl())
                 .kcals(recipeEntity.getKcals())
-                .favourites(recipeEntity.getFavourites())
                 .cuisineName(recipeEntity.getCuisine().getName())
                 .ingredientDtoList(
                         recipeEntity.getRecipeIngredientEntityList()

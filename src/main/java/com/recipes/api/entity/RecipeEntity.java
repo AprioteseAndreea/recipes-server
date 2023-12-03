@@ -50,10 +50,6 @@ public class RecipeEntity {
     @Column(name = "kcals")
     private Integer kcals;
 
-    @Basic
-    @Column(name = "favourites")
-    private Integer favourites;
-
     @ManyToOne
     @JoinColumn(name = "cuisine_id")
     private CuisineEntity cuisine;
