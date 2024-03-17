@@ -69,18 +69,21 @@ public class UserControllerImpl implements UserController {
             throw new BadRequestException(INVALID_REQUEST_BODY);
         }
 
-        try {
-            UserIngredientDto createdUserIngredient = userIngredientService.addUserIngredient(userIngredientDto, id);
-            // Assuming you want to return a 201 Created status along with the created UserIngredientDto
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdUserIngredient);
-        } catch (NotFoundException e) {
-            // Handle the case when either ingredient or user is not found
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        } catch (Exception e) {
-            // Handle other exceptions or errors
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
+        return new ResponseEntity<>(userIngredientService.addUserIngredient(userIngredientDto, id), HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<UserIngredientDto> updateUserIngredient(Integer id, UserIngredientDto userIngredientDto) throws IllegalAccessException, BadRequestException {
+        if (!ControllerUtils.isValidRequestBody(userIngredientDto)) {
+            throw new BadRequestException(INVALID_REQUEST_BODY);
+        }
 
+        return new ResponseEntity<>(userIngredientService.updateUserIngredient(userIngredientDto, id), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<String> deleteUserIngredient(Integer id, Integer ingrId) {
+        userIngredientService.deleteUserIngredient(ingrId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

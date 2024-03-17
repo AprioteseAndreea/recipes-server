@@ -6,5 +6,11 @@ import java.util.List;
 
 public interface UserIngredientService {
     List<UserIngredientDto> getUserIngredients(Integer userId);
+
     UserIngredientDto addUserIngredient(UserIngredientDto userIngredientDto, Integer userId);
+
+    UserIngredientDto updateUserIngredient(UserIngredientDto userIngredientDto, Integer userId);
+
+    void deleteUserIngredient(Integer userIngrId);
+
 }

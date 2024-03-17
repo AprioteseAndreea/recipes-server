@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Data
@@ -91,6 +92,7 @@ public class UserDto {
                         userEntity.getUserIngredientsList()
                         .stream()
                         .map(UserIngredientDto::fromEntity)
+                                .sorted(Comparator.comparing(u->u.getIngredient().getName()))
                         .toList())
                 .userDislikedIngredients(
                         userEntity.getUserDislikedIngredients()

@@ -28,4 +28,9 @@ public interface UserController {
     @PostMapping("/{id}/ingredients")
     ResponseEntity<UserIngredientDto> postUserIngredient(@PathVariable Integer id, @Valid @RequestBody UserIngredientDto userIngredientDto) throws IllegalAccessException, BadRequestException;
 
+    @PatchMapping("/{id}/ingredients")
+    ResponseEntity<UserIngredientDto> updateUserIngredient(@PathVariable Integer id, @Valid @RequestBody UserIngredientDto userIngredientDto) throws IllegalAccessException, BadRequestException;
+
+    @DeleteMapping("/{id}/ingredients/{ingrId}")
+    ResponseEntity<String> deleteUserIngredient(@PathVariable Integer id, @PathVariable Integer ingrId);
 }

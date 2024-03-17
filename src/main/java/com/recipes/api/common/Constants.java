@@ -14,7 +14,8 @@ public final class Constants {
     public static final String USER_INGREDIENT_NOT_FOUND = "User ingredients not found";
     public static final String INVALID_REQUEST_BODY = "Invalid object received on the request body";
 
-
+    public static final String X_ERROR_MESSAGE = "X-Error-Message";
+    public static final String X_ERROR_CODE = "X-Error-Code";
 
 
 
