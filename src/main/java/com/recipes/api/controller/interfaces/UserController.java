@@ -16,6 +16,9 @@ public interface UserController {
     @GetMapping("/{id}")
     ResponseEntity<UserDto> getUserById(@PathVariable Integer id);
 
+    @PatchMapping("/{id}")
+    ResponseEntity<UserDto> updateUser(@PathVariable Integer id, @Valid @RequestBody UserDto userDto) throws IllegalAccessException, BadRequestException;
+
     @GetMapping
     ResponseEntity<UserDto> getUserByEmail(@RequestParam String email);
 

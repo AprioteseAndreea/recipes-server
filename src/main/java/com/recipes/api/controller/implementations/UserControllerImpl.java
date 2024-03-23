@@ -42,6 +42,15 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
+    public ResponseEntity<UserDto> updateUser(Integer id, UserDto userDto) throws IllegalAccessException, BadRequestException {
+        if (!ControllerUtils.isValidRequestBody(userDto)) {
+            throw new BadRequestException(INVALID_REQUEST_BODY);
+        }
+
+        return new ResponseEntity<>(userService.updateUser(userDto, id), HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<UserDto> getUserByEmail(String email) {
 
         UserDto userDto = userService.getUserByEmail(email);

@@ -52,6 +52,7 @@ public class UserDto {
 
     private Boolean wantToLearnNewSkills = false;
     private Boolean wantToTryNewCuisines = false;
+    private Boolean wantToEatHealthy = false;
     private Boolean wantToSaveMoney = false;
     private Boolean wantToSaveTime = false;
 
@@ -77,6 +78,7 @@ public class UserDto {
                 .wantToLearnNewSkills(userEntity.getWantToLearnNewSkills())
                 .wantToTryNewCuisines(userEntity.getWantToTryNewCuisines())
                 .wantToSaveMoney(userEntity.getWantToSaveMoney())
+                .wantToEatHealthy(userEntity.getWantToEatHealthy())
                 .wantToSaveTime(userEntity.getWantToSaveTime())
                 .userDiets(
                         userEntity.getUserDiets()

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 import static com.recipes.api.common.Constants.CUISINE_NOT_FOUND;
@@ -21,7 +22,12 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public List<IngredientDto> getIngredients() {
-        return ingredientRepository.findAll().stream().map(IngredientDto::fromEntity).toList();
+        return ingredientRepository
+                .findAll()
+                .stream()
+                .map(IngredientDto::fromEntity)
+                .sorted(Comparator.comparing(IngredientDto::getName))
+                .toList();
     }
 
     @Override

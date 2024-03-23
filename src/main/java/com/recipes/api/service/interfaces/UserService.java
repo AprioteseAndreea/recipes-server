@@ -6,4 +6,5 @@ public interface UserService {
 
     UserDto getUserById(Integer id);
     UserDto getUserByEmail(String email);
+    UserDto updateUser(UserDto userDto, Integer id);
 }

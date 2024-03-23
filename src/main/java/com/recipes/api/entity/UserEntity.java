@@ -78,6 +78,11 @@ public class UserEntity implements Serializable {
     private Boolean wantToTryNewCuisines = false;
 
     @Basic
+    @Column(name = "want_to_eat_healthy", nullable = false)
+    @Builder.Default
+    private Boolean wantToEatHealthy = false;
+
+    @Basic
     @Column(name = "want_to_save_money", nullable = false)
     @Builder.Default
     private Boolean wantToSaveMoney = false;
