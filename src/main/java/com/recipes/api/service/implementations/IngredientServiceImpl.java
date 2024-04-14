@@ -26,7 +26,6 @@ public class IngredientServiceImpl implements IngredientService {
                 .findAll()
                 .stream()
                 .map(IngredientDto::fromEntity)
-                .sorted(Comparator.comparing(IngredientDto::getName))
                 .toList();
     }
 

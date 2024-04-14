@@ -71,13 +71,11 @@ public class UserServiceImpl implements UserService {
 
         userEntity.setUserDiets(dietsEntities);
 
-        System.out.println(userEntity);
+        List<IngredientEntity> ingredientEntities = userDto.getUserDislikedIngredients().stream()
+                .map(ingredientDto -> modelMapper.map(ingredientDto, IngredientEntity.class))
+                .collect(Collectors.toList());
 
-//        List<IngredientEntity> ingredientEntities = userDto.getUserIngredients().stream()
-//                .map(ingredientDto -> modelMapper.map(ingredientDto, IngredientEntity.class))
-//                .toList();
-//
-//        userEntity.setUserDislikedIngredients(ingredientEntities);
+        userEntity.setUserDislikedIngredients(ingredientEntities);
 
         return UserDto.fromEntity(userRepository.save(userEntity));
     }

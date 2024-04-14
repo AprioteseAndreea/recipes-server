@@ -94,7 +94,6 @@ public class UserDto {
                         userEntity.getUserIngredientsList()
                         .stream()
                         .map(UserIngredientDto::fromEntity)
-                                .sorted(Comparator.comparing(u->u.getIngredient().getName()))
                         .toList())
                 .userDislikedIngredients(
                         userEntity.getUserDislikedIngredients()
