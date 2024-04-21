@@ -20,7 +20,6 @@ public class UserRecommendationDto {
     private RecipeDto lunchRecipe;
     private RecipeDto dinnerRecipe;
 
-    @FutureOrPresent
     private LocalDateTime dateTime;
 
     public static UserRecommendationDto fromEntity(final UserRecommendationEntity userRecommendation) {

@@ -1,49 +1,29 @@
 package com.recipes.api.dtos;
 
+import com.recipes.api.entity.IngredientEntity;
 import com.recipes.api.entity.UserEntity;
 import com.recipes.api.entity.enums.CookingLevel;
 import com.recipes.api.entity.enums.Gender;
 import com.recipes.api.entity.enums.PhysicalEffort;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Comparator;
 import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserProfileDto {
     private Integer id;
-
-    @Size(max = 35, message = "The maximum length is 100 characters")
-    private String firstName;
-
-    @Size(max = 35, message = "The maximum length is 100 characters")
-    private String lastName;
-
-    @NotBlank(message = "Email is mandatory")
-    @Email
-    @Size(max = 100, message = "The maximum length is 100 characters")
     private String email;
 
-    @Min(value = 18, message = "Age should not be less than 18")
-    @Max(value = 150, message = "Age should not be greater than 150")
     private Integer age;
-
-    @Min(value = 70, message = "The height should not be less than 70 cm")
-    @Max(value = 250, message = "The height not be greater than 250 cm")
     private Integer height;
-
-    @Min(value = 20, message = "The weight not be less than 20")
-    @Max(value = 200, message = "The weight should not be greater than 200")
     private Integer weight;
 
-    @PositiveOrZero
     private Double bms;
 
     private Gender gender;
@@ -60,14 +40,12 @@ public class UserDto {
     private List<CuisineDto> userCuisines;
 
     private List<UserIngredientDto> userIngredients;
-    private List<IngredientDto> userDislikedIngredients;
-    private List<UserRecommendationDto> userRecommendations;
+    private List<Integer> userDislikedIngredientsIds;
+    private List<UserRecProfileDto> userRecommendations;
 
-    public static UserDto fromEntity(final UserEntity userEntity) {
-        return UserDto.builder()
+    public static UserProfileDto fromEntityWithIdsOnly(final UserEntity userEntity) {
+        return UserProfileDto.builder()
                 .id(userEntity.getId())
-                .firstName(userEntity.getFirstName())
-                .lastName(userEntity.getLastName())
                 .email(userEntity.getEmail())
                 .age(userEntity.getAge())
                 .height(userEntity.getHeight())
@@ -93,18 +71,25 @@ public class UserDto {
                                 .toList())
                 .userIngredients(
                         userEntity.getUserIngredientsList()
-                        .stream()
-                        .map(UserIngredientDto::fromEntity)
-                        .toList())
-                .userDislikedIngredients(
+                                .stream()
+                                .map(UserIngredientDto::fromEntity)
+                                .toList())
+                .userDislikedIngredientsIds(
                         userEntity.getUserDislikedIngredients()
-                        .stream()
-                        .map(IngredientDto::fromEntity)
-                        .toList())
-                .userRecommendations(userEntity.getUserRecommendations()
-                        .stream()
-                        .map(UserRecommendationDto::fromEntity)
-                        .toList())
+                                .stream()
+                                .map(IngredientEntity::getId)
+                                .toList())
+                .userRecommendations(
+                        userEntity.getUserRecommendations()
+                                .stream()
+                                .map(userRecommendationDto -> UserRecProfileDto.builder()
+                                        .id(userRecommendationDto.getId())
+                                        .dateTime(userRecommendationDto.getDateTime())
+                                        .breakfastRecipe(UserProfileRecipeDto.fromRecipeDto(userRecommendationDto.getBreakfastRecipeId()))
+                                        .lunchRecipe(UserProfileRecipeDto.fromRecipeDto(userRecommendationDto.getLunchRecipeId()))
+                                        .dinnerRecipe(UserProfileRecipeDto.fromRecipeDto(userRecommendationDto.getDinnerRecipeId()))
+                                        .build())
+                                .toList())
                 .build();
     }
 }

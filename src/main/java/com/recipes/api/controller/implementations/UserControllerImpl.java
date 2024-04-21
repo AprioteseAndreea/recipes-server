@@ -42,6 +42,14 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
+    public ResponseEntity<List<UserRecommendationDto>> generateRecommendationsByUser(Integer id, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        System.out.println("Sunt in controller impl");
+        List<UserRecommendationDto> userRecommendationDtos = userRecommendationService.getUserRecommendationsByInterval(id, startDateTime, endDateTime);
+        HttpStatus status = ObjectUtils.isNotEmpty(userRecommendationDtos) ? HttpStatus.OK : HttpStatus.NO_CONTENT;
+        return new ResponseEntity<>(userRecommendationDtos, status);
+    }
+
+    @Override
     public ResponseEntity<UserDto> updateUser(Integer id, UserDto userDto) throws IllegalAccessException, BadRequestException {
         if (!ControllerUtils.isValidRequestBody(userDto)) {
             throw new BadRequestException(INVALID_REQUEST_BODY);

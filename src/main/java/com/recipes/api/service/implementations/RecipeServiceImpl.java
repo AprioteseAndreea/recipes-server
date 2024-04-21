@@ -1,6 +1,7 @@
 package com.recipes.api.service.implementations;
 
 import com.recipes.api.dtos.RecipeDto;
+import com.recipes.api.dtos.RecipeSummaryDto;
 import com.recipes.api.exceptions.NotFoundException;
 import com.recipes.api.repository.RecipeRepository;
 import com.recipes.api.service.interfaces.RecipeService;
@@ -21,6 +22,11 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<RecipeDto> getRecipes() {
         return recipeRepository.findAll().stream().map(RecipeDto::fromEntity).toList();
+    }
+
+    @Override
+    public List<RecipeSummaryDto> getRecipesSummary() {
+        return recipeRepository.findAll().stream().map(RecipeSummaryDto::fromEntity).toList();
     }
 
     @Override

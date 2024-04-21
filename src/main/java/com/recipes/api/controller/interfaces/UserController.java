@@ -16,6 +16,9 @@ public interface UserController {
     @GetMapping("/{id}")
     ResponseEntity<UserDto> getUserById(@PathVariable Integer id);
 
+    @PostMapping("/{id}/generate-recommendation")
+    ResponseEntity<List<UserRecommendationDto>> generateRecommendationsByUser(@PathVariable Integer id, @RequestParam LocalDateTime startDateTime, @RequestParam LocalDateTime endDateTime);
+
     @PatchMapping("/{id}")
     ResponseEntity<UserDto> updateUser(@PathVariable Integer id, @Valid @RequestBody UserDto userDto) throws IllegalAccessException, BadRequestException;
 
