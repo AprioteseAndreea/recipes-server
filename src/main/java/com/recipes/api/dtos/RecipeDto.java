@@ -28,8 +28,6 @@ public class RecipeDto {
 
     private CookingLevel cookingLevel;
 
-    private String instructions;
-
     private String description;
 
 
@@ -45,7 +43,7 @@ public class RecipeDto {
 
     private List<RecipeIngredientDto> ingredientDtoList;
     private List<DietDto> recipeDiets;
-
+    private List<RecipeInstructionDto> recipeInstructions;
 
     public static RecipeDto fromEntity(final RecipeEntity recipeEntity) {
         return RecipeDto.builder()
@@ -53,7 +51,6 @@ public class RecipeDto {
                 .name(recipeEntity.getName())
                 .prepTime(recipeEntity.getPrepTime())
                 .cookingLevel(recipeEntity.getCookingLevel())
-                .instructions(recipeEntity.getInstructions())
                 .description(recipeEntity.getDescription())
                 .pictureUrl(recipeEntity.getPictureUrl())
                 .kcals(recipeEntity.getKcals())
@@ -67,8 +64,12 @@ public class RecipeDto {
                         recipeEntity.getRecipeDiets()
                                 .stream()
                                 .map(DietDto::fromEntity)
-                                .toList()
-                )
+                                .toList())
+                .recipeInstructions(
+                        recipeEntity.getRecipeInstructionEntities()
+                                .stream()
+                                .map(RecipeInstructionDto::fromEntity)
+                                .toList())
                 .build();
     }
 }

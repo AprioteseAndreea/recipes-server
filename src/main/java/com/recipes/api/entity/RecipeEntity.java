@@ -35,10 +35,6 @@ public class RecipeEntity {
     private CookingLevel cookingLevel;
 
     @Basic
-    @Column(name = "instructions", length = 2000)
-    private String instructions;
-
-    @Basic
     @Column(name = "description")
     private String description;
 
@@ -62,6 +58,11 @@ public class RecipeEntity {
     )
     @ToString.Exclude
     private List<DietEntity> recipeDiets;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "recipe", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    private List<RecipeInstructionEntity> recipeInstructionEntities;
 
     @JsonIgnore
     @OneToMany(mappedBy = "recipe", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
