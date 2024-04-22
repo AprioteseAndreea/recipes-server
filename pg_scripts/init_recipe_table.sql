@@ -1,0 +1,15 @@
+insert into public.recipe (id, cooking_level, favourites, instructions, kcals, name, picture_url, prep_time, cuisine_id, description)
+values  (1, 'BEGINNER', 20, 'sdf', 350, 'Avocado Toast with Scrambled Eggs', '17e12e1b-49ff-4854-a0e5-81ffb2cb6f75', 30, 1, 'Here''s how to make avocado toast with scrambled egg the best possible version of itself. A quick, easy meal that''s nevertheless positively divine.'),
+        (3, 'BEGINNER', 18, 'sfsd', 257, 'Broccoli Cauliflower Salad', '08ac70f5-790f-4306-aced-b9c4d65c712d', 20, 1, 'This broccoli cauliflower salad tastes great immediately, but you can also refrigerate it to let the flavors to meld before serving. Leftovers last refrigerated for up to 3 days.
+
+'),
+        (7, 'BEGINNER', 0, 'dummy', 250, 'Mediterranean Quinoa Salad', 'WIP', 20, 2, 'Colorful Mediterranean salad with quinoa, full of fresh colors and flavors. A perfect option for a light and nutritious meal.'),
+        (8, 'INTERMEDIATE', 0, 'dummy', 350, 'Stuffed Bell Peppers', 'WIP', 45, 1, 'Bell peppers stuffed with rice, vegetables, and ground meat, baked in the oven until golden and tender. A comforting and delicious recipe.'),
+        (9, 'INTERMEDIATE', 0, 'dummy', 400, 'Chicken Stir-Fry', 'WIP', 25, 1, 'Quick chicken stir-fry with crispy vegetables, cooked in a spicy soy and ginger sauce. A simple and healthy recipe for a quick dinner on busy days.'),
+        (10, 'BEGINNER', 0, 'dummy', 200, 'Berry Smoothie Bowl', 'WIP', 10, 3, 'Refreshing smoothie bowl made with mixed berries, banana, and almond milk, topped with granola and fresh fruit. A nutritious and delicious breakfast or snack.'),
+        (11, 'INTERMEDIATE', 0, 'dummy', 450, 'Spaghetti Carbonara', 'WIP', 30, 4, 'Classic Italian pasta dish with spaghetti, pancetta, eggs, and Parmesan cheese, seasoned with black pepper. A creamy and indulgent recipe for pasta lovers.'),
+        (2, 'INTERMEDIATE', 45, 'fsdf', 541, 'Chicken Parmesan', '29cdfbb0-bb1c-4250-b8dd-a94d519374a8', 55, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+        (12, 'BEGINNER', 0, 'dummy', 180, 'Greek Salad', 'WIP', 15, 5, 'Traditional Greek salad made with fresh tomatoes, cucumbers, olives, feta cheese, and a simple olive oil dressing. A light and refreshing salad perfect for summer.'),
+        (13, 'BEGINNER', 0, 'dummy', 320, 'Tuna Salad Sandwich', 'WIP', 15, 6, 'Classic tuna salad sandwich made with canned tuna, mayonnaise, celery, and onions, served on whole wheat bread. A quick and satisfying lunch option.'),
+        (4, 'BEGINNER', 20, 'dummy', 350, 'Baked Sweet Potatoes', '35ba7da6-eb23-4879-9cc1-29d3405fb830', 45, 1, 'These baked sweet potato cubes, seasoned with olive oil and oregano, make a delicious side dish. The whole family enjoys eating sweet potato when I make this recipe!'),
+        (6, 'BEGINNER', 0, 'dummy', 489, 'Grilled Salmon with Quinoa and Steamed Broccoli', 'f8bfd5af-0af1-4f7f-9998-69850c7763c7', 30, 1, 'Delicious grilled salmon, rich in protein and Omega-3 fatty acids. An easy-to-make and very healthy recipe.');

@@ -7,5 +7,21 @@ services:
       - POSTGRES_DB=recipesapp
       - POSTGRES_USER=postgresql
       - POSTGRES_PASSWORD=postgresql
+    volumes:
+      - ./pg_scripts/create_tables.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./pg_scripts/init_cuisine_table.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./pg_scripts/init_diet_table.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./pg_scripts/init_ingredient_image_table.sql:/docker-entrypoint-initdb.d/4.sql
+      - ./pg_scripts/init_ingredient_table.sql:/docker-entrypoint-initdb.d/5.sql
+      - ./pg_scripts/init_recipe_table.sql:/docker-entrypoint-initdb.d/6.sql
+      - ./pg_scripts/init_recipe_diet_table.sql:/docker-entrypoint-initdb.d/7.sql
+      - ./pg_scripts/init_recipe_ingredient_table.sql:/docker-entrypoint-initdb.d/8.sql
+      - ./pg_scripts/init_recipe_instruction_table.sql:/docker-entrypoint-initdb.d/9.sql
+      - ./pg_scripts/init_user_table.sql:/docker-entrypoint-initdb.d/10.sql
+      - ./pg_scripts/init_user_cuisine_table.sql:/docker-entrypoint-initdb.d/11.sql
+      - ./pg_scripts/init_user_diet_table.sql:/docker-entrypoint-initdb.d/12.sql
+      - ./pg_scripts/init_user_disliked_ingredient_table.sql:/docker-entrypoint-initdb.d/13.sql
+      - ./pg_scripts/init_user_ingredient_table.sql:/docker-entrypoint-initdb.d/14.sql
+      - ./pg_scripts/init_user_recommendation_table.sql:/docker-entrypoint-initdb.d/15.sql
     ports:
       - 5432:5432

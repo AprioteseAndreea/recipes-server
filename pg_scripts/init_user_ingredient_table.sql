@@ -1,0 +1,17 @@
+insert into public.user_ingredient (id, is_cart, quantity, unit_of_measure, ingredient_id, user_id)
+values  (49, false, 100, 'G', 7, 1),
+        (50, false, 200, 'G', 9, 1),
+        (51, false, 1, 'KG', 10, 1),
+        (3, true, 300, 'G', 4, 1),
+        (52, false, 300, 'G', 94, 1),
+        (19, false, 550, 'G', 13, 1),
+        (25, false, 1, 'G', 4, 1),
+        (30, false, 1, 'KG', 2, 1),
+        (32, false, 1, 'KG', 4, 1),
+        (18, false, 500, 'G', 12, 1),
+        (14, true, 90, 'G', 8, 1),
+        (27, true, 398, 'G', 10, 1),
+        (11, false, 508, 'ML', 5, 1),
+        (22, false, 243, 'G', 16, 1),
+        (47, false, 4, 'G', 2, 1),
+        (28, false, 400, 'G', 15, 1);
