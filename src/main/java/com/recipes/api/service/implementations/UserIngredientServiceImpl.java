@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,9 @@ public class UserIngredientServiceImpl implements UserIngredientService {
         return userIngredientRepository
                 .findUserIngredientEntitiesByUser_Id(userId)
                 .stream()
-                .map(UserIngredientDto::fromEntity).toList();
+                .map(UserIngredientDto::fromEntity)
+                .sorted(Comparator.comparing(i -> i.getIngredient().getName()))
+                .toList();
     }
 
     @Override

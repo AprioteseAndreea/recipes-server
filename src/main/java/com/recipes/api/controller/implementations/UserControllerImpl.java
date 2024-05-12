@@ -43,10 +43,8 @@ public class UserControllerImpl implements UserController {
 
     @Override
     public ResponseEntity<List<UserRecommendationDto>> generateRecommendationsByUser(Integer id, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        System.out.println("Sunt in controller impl");
-        List<UserRecommendationDto> userRecommendationDtos = userRecommendationService.getUserRecommendationsByInterval(id, startDateTime, endDateTime);
-        HttpStatus status = ObjectUtils.isNotEmpty(userRecommendationDtos) ? HttpStatus.OK : HttpStatus.NO_CONTENT;
-        return new ResponseEntity<>(userRecommendationDtos, status);
+        userRecommendationService.getUserRecommendationsByInterval(id, startDateTime, endDateTime);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override

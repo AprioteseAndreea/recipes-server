@@ -26,6 +26,7 @@ public class IngredientServiceImpl implements IngredientService {
                 .findAll()
                 .stream()
                 .map(IngredientDto::fromEntity)
+                .sorted(Comparator.comparing(IngredientDto::getName))
                 .toList();
     }
 
@@ -36,7 +37,5 @@ public class IngredientServiceImpl implements IngredientService {
                 .map(IngredientDto::fromEntity)
                 .orElseThrow(() -> new NotFoundException(String.format(INGREDIENT_NOT_FOUND, id)));
     }
-
-
 }
 
