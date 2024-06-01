@@ -1,6 +1,7 @@
 package com.recipes.api.entity;
 
 
+import com.recipes.api.entity.enums.IngredientCategory;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,6 +34,10 @@ public class IngredientEntity implements Serializable {
     @Basic
     @Column(name = "picture_url")
     private String pictureUrl;
+
+    @Basic
+    @Column(name = "ingredient_category")
+    private IngredientCategory ingredientCategory;
 
     @JsonIgnore
     @OneToMany(mappedBy = "ingredient", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)

@@ -165,11 +165,14 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
 
         // Definim ponderile pentru fiecare criteriu
         Map<String, Integer> weights = new HashMap<>();
-        weights.put("disliked_ingredients", -2);
-        weights.put("fridge_ingredients", 3);
-        weights.put("user_diets", 2);
-        weights.put("user_cuisines", 2);
+        weights.put("disliked_ingredients", -3);
+        weights.put("fridge_ingredients", 2);
+        weights.put("user_diets", 3);
+        weights.put("user_cuisines", 3);
         weights.put("cooking_level", 1);
+        weights.put("want_to_try_new_cuisines", 2);
+        weights.put("want_to_learn_new_skills", 2);
+
 
         // 1. Micsoram scorul retetelor ce contin ingredientele neplăcute
         List<IngredientDto> dislikedIngredientsIds = userDto.getUserDislikedIngredients();
@@ -222,6 +225,17 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
             score += weights.get("cooking_level");
         }
 
+        // 6. Verificam daca utilizatorul vrea sa incerce noi bucatarii iar bucataria retetei nu se regaseste in preferintele utilizatorului
+
+        if (Boolean.TRUE.equals(userDto.getWantToTryNewCuisines()) && !userCuisines.contains(recipeDto.getCuisineName())) {
+            score += weights.get("want_to_try_new_cuisines");
+        }
+
+        // 7. Verificam daca utilizatorul vrea sa invete noi skill-uri iar nivelul de dificultate al retetei este mai mare decat nivelul de dificultate al utilizatorului
+
+        if (Boolean.TRUE.equals(userDto.getWantToLearnNewSkills()) && recipeDto.getCookingLevel().ordinal() > userCookingLevel.ordinal()) {
+            score += weights.get("want_to_learn_new_skills");
+        }
         return score;
     }
 
@@ -269,8 +283,11 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
                         }
 
 
+                        // Criteriu de departajare in cazul in care doua retete au acelasi scor - timp de preparare sau numar de calorii
                         if (Boolean.TRUE.equals(userDto.getWantToSaveTime())) {
                             sameScoreRecipes.sort(Comparator.comparingInt(RecipeDto::getPrepTime));
+                        } else {
+                            sameScoreRecipes.sort(Comparator.comparingInt(RecipeDto::getKcals));
                         }
 
                         recommendations.get(currentDate.format(DateTimeFormatter.ISO_LOCAL_DATE)).add(sameScoreRecipes.get(0));

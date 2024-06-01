@@ -1,6 +1,7 @@
 package com.recipes.api.dtos;
 
 import com.recipes.api.entity.IngredientEntity;
+import com.recipes.api.entity.enums.IngredientCategory;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -27,12 +28,15 @@ public class IngredientDto {
     @Max(value = 100, message = "Index should not be greater than 18")
     private Integer expensiveIndex;
 
+    private IngredientCategory ingredientCategory;
+
     public static IngredientDto fromEntity(final IngredientEntity ingredientEntity){
         return IngredientDto.builder()
                 .id(ingredientEntity.getId())
                 .name(ingredientEntity.getName())
                 .pictureUrl(ingredientEntity.getPictureUrl())
                 .expensiveIndex(ingredientEntity.getExpensiveIndex())
+                .ingredientCategory(ingredientEntity.getIngredientCategory())
                 .build();
     }
 }
