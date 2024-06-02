@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.recipes.api.common.Constants.*;
 
@@ -64,6 +65,10 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
     public void calculateUserCart(Map<String, List<RecipeDto>> userRecommendationDtos, UserDto userDto) {
         // Creează o structură de date pentru lista de cumpărături
         Map<IngredientKey, Integer> shoppingList = new HashMap<>();
+        List<UserIngredientDto> fridgeUserIngredients = userDto.getUserIngredients()
+                .stream()
+                .filter(ingredient -> !ingredient.getIsCartIngredient())
+                .toList();
 
         // Iterăm prin fiecare zi și rețetă pentru a aduna ingredientele
         for (Map.Entry<String, List<RecipeDto>> entry : userRecommendationDtos.entrySet()) {
@@ -93,8 +98,43 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
             }
         }
 
+        // TO DO: Iteram prin lista de cumparaturi si verificam ce ingrediente sunt deja in frigider si in ce cantitate
+        // daca este si este in cantitate suficienta, nu il adaugam in lista de cumparaturi
+        // daca este si nu este in cantitate suficienta, adaugam in lista de cumparaturi doar diferenta
+
+        for (Map.Entry<IngredientKey, Integer> entry : shoppingList.entrySet()) {
+            IngredientKey ingredientKey = entry.getKey();
+            int requiredQuantity = entry.getValue();
+
+            // Căutăm ingredientul în frigider
+            UserIngredientDto fridgeIngredient = findIngredientInFridge(fridgeUserIngredients, ingredientKey);
+
+            if (fridgeIngredient != null) {
+                if (fridgeIngredient.getQuantity() >= requiredQuantity) {
+                    // Dacă cantitatea din frigider este suficientă, eliminăm ingredientul din lista de cumpărături
+                    entry.setValue(0);
+                } else {
+                    // Dacă cantitatea din frigider nu este suficientă, calculăm diferența și o păstrăm în lista de cumpărături
+                    shoppingList.put(ingredientKey, (int) (requiredQuantity - fridgeIngredient.getQuantity()));
+                }
+            }
+        }
+
+        // Eliminăm ingredientele care au fost marcate cu 0
+        shoppingList.entrySet().removeIf(entry -> entry.getValue() == 0);
+
         saveUserCartInDataBase(shoppingList, userDto);
     }
+    private UserIngredientDto findIngredientInFridge(List<UserIngredientDto> fridgeUserIngredients, IngredientKey ingredientKey) {
+        for (UserIngredientDto fridgeIngredient : fridgeUserIngredients) {
+            if (fridgeIngredient.getIngredient().getId().equals(ingredientKey.getIngredientId())
+                    && fridgeIngredient.getUnitOfMeasure().equals(ingredientKey.getUnitOfMeasure())) {
+                return fridgeIngredient;
+            }
+        }
+        return null;
+    }
+
 
     public void clearPreviousShoppingList(Integer userId) {
         userIngredientRepository.removeUserIngredientEntitiesByIsCartIngredientAndUserId(true, userId);
@@ -186,7 +226,11 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
         }
 
         // 2. Prioritizăm ingredientele disponibile în frigider
-        List<UserIngredientDto> fridgeUserIngredients = userDto.getUserIngredients();
+        List<UserIngredientDto> fridgeUserIngredients = userDto.getUserIngredients()
+                .stream()
+                .filter(ingredient -> !ingredient.getIsCartIngredient())
+                .toList();
+
         List<Integer> fridgeIngredientIds = new ArrayList<>();
         for (UserIngredientDto ingredient : fridgeUserIngredients) {
             fridgeIngredientIds.add(ingredient.getIngredient().getId());

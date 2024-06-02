@@ -20,11 +20,14 @@ alter table diet
 
 create table ingredient
 (
-    id              integer default nextval('ingredient_id_seq'::regclass) not null
+    id                  integer default nextval('ingredient_id_seq'::regclass) not null
         primary key,
-    expensive_index integer,
-    name            varchar(100),
-    picture_url     varchar(255)
+    expensive_index     integer,
+    name                varchar(100),
+    picture_url         varchar(255),
+    ingredient_category smallint
+        constraint ingredient_ingredient_category_check
+            check ((ingredient_category >= 0) AND (ingredient_category <= 13))
 );
 
 alter table ingredient

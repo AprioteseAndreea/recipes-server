@@ -7,6 +7,5 @@ values  (1, 'Italian'),
         (7, 'Indian'),
         (8, 'Maroccan'),
         (9, 'Barbecue'),
-        (11, 'test'),
         (5, 'French'),
         (10, 'Chinese');
