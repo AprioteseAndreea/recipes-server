@@ -41,6 +41,8 @@ public class RecipeDto {
 
     private String cuisineName;
 
+    private Double rating;
+
     private List<RecipeIngredientDto> ingredientDtoList;
     private List<DietDto> recipeDiets;
     private List<RecipeInstructionDto> recipeInstructions;

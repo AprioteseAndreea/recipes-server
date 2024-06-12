@@ -2,6 +2,7 @@ package com.recipes.api.controller.interfaces;
 
 import com.recipes.api.common.exceptions.BadRequestException;
 import com.recipes.api.dtos.UserDto;
+import com.recipes.api.dtos.RecipeUserDto;
 import com.recipes.api.dtos.UserIngredientDto;
 import com.recipes.api.dtos.UserRecommendationDto;
 import jakarta.validation.Valid;
@@ -39,4 +40,5 @@ public interface UserController {
 
     @DeleteMapping("/{id}/ingredients/{ingrId}")
     ResponseEntity<String> deleteUserIngredient(@PathVariable Integer id, @PathVariable Integer ingrId);
+
 }

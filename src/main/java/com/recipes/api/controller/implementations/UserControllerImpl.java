@@ -4,9 +4,10 @@ import com.recipes.api.common.ControllerUtils;
 import com.recipes.api.common.exceptions.BadRequestException;
 import com.recipes.api.controller.interfaces.UserController;
 import com.recipes.api.dtos.UserDto;
+import com.recipes.api.dtos.RecipeUserDto;
 import com.recipes.api.dtos.UserIngredientDto;
 import com.recipes.api.dtos.UserRecommendationDto;
-import com.recipes.api.exceptions.NotFoundException;
+import com.recipes.api.service.interfaces.UserFeedbackService;
 import com.recipes.api.service.interfaces.UserIngredientService;
 import com.recipes.api.service.interfaces.UserRecommendationService;
 import com.recipes.api.service.interfaces.UserService;
@@ -101,4 +102,6 @@ public class UserControllerImpl implements UserController {
         userIngredientService.deleteUserIngredient(ingrId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
