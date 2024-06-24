@@ -98,10 +98,6 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
             }
         }
 
-        // TO DO: Iteram prin lista de cumparaturi si verificam ce ingrediente sunt deja in frigider si in ce cantitate
-        // daca este si este in cantitate suficienta, nu il adaugam in lista de cumparaturi
-        // daca este si nu este in cantitate suficienta, adaugam in lista de cumparaturi doar diferenta
-
         for (Map.Entry<IngredientKey, Integer> entry : shoppingList.entrySet()) {
             IngredientKey ingredientKey = entry.getKey();
             int requiredQuantity = entry.getValue();
@@ -307,7 +303,7 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
         Map<RecipeDto, Integer> sortedRecipesDto = rankRecipes(userDto, recipeDtos);
 
         LocalDate currentDate = startDate.toLocalDate();
-        double dailyCaloriesLimit = userDto.getBms();
+        double dailyCaloriesLimit = userDto.getBmr();
 
         while (!currentDate.isAfter(endDate.toLocalDate())) {
             recommendations.put(currentDate.format(DateTimeFormatter.ISO_LOCAL_DATE), new ArrayList<>());

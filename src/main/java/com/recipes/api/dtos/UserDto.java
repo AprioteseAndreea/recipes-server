@@ -44,7 +44,7 @@ public class UserDto {
     private Integer weight;
 
     @PositiveOrZero
-    private Double bms;
+    private Double bmr;
 
     private Gender gender;
     private CookingLevel cookingLevel;
@@ -72,7 +72,7 @@ public class UserDto {
                 .age(userEntity.getAge())
                 .height(userEntity.getHeight())
                 .weight(userEntity.getWeight())
-                .bms(userEntity.getBms())
+                .bmr(userEntity.getBmr())
                 .gender(userEntity.getGender())
                 .cookingLevel(userEntity.getCookingLevel())
                 .physicalEffort(userEntity.getPhysicalEffort())

@@ -39,7 +39,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUser(UserDto userDto, Integer id) {
-        System.out.println(userDto);
         UserEntity userEntity = userRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException("User not found"));
@@ -50,7 +49,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setAge(userDto.getAge());
         userEntity.setHeight(userDto.getHeight());
         userEntity.setWeight(userDto.getWeight());
-        userEntity.setBms(userDto.getBms());
+        userEntity.setBmr(userDto.getBmr());
         userEntity.setPhysicalEffort(userDto.getPhysicalEffort());
         userEntity.setCookingLevel(userDto.getCookingLevel());
         userEntity.setWantToLearnNewSkills(userDto.getWantToLearnNewSkills());

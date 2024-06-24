@@ -1,3 +1,3 @@
-insert into public.user (id, age, bms, cooking_level, email, first_name, gender, height, last_name, physical_effort, want_to_learn_new_skills, want_to_save_money, want_to_save_time, want_to_try_new_cuisines, weight, want_to_eat_healthy)
+insert into public.user (id, age, bmr, cooking_level, email, first_name, gender, height, last_name, physical_effort, want_to_learn_new_skills, want_to_save_money, want_to_save_time, want_to_try_new_cuisines, weight, want_to_eat_healthy)
 values  (2, 24, 1900, 'INTERMEDIATE', 'florin9925@gmail.com', 'Florin', 'M', 180, 'Arhip', 'SLIGHTLY_ACTIVE', true, true, true, true, 180, true),
         (1, 23, 3468, 'INTERMEDIATE', 'andreea.apriotese11@gmail.com', 'Andreea', 'F', 162, 'Apriotese', 'SLIGHTLY_ACTIVE', true, false, false, true, 60, true);

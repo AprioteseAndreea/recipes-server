@@ -82,7 +82,7 @@ create table "user"
     id                       integer default nextval('user_id_seq'::regclass) not null
         primary key,
     age                      integer,
-    bms                      double precision,
+    bmr                      double precision,
     cooking_level            varchar(255)
         constraint user_cooking_level_check
             check ((cooking_level)::text = ANY

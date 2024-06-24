@@ -54,8 +54,8 @@ public class UserEntity implements Serializable {
     private Integer weight;
 
     @Basic
-    @Column(name = "bms")
-    private Double bms;
+    @Column(name = "bmr")
+    private Double bmr;
 
     @Basic
     @Enumerated(EnumType.STRING)

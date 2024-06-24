@@ -170,4 +170,11 @@ values  ('01758d04-39c6-4076-9b6b-3e29612df8e9', 'india-icon.png', 'image/png', 
         ('0752f059-d54a-4bbd-94a3-860729402368', 'easy-greek-chicken-gyros-with-tzatziki-3.png', 'image/png', 17083, 106636),
         ('adc6d2bb-6621-4f4e-a034-c2e3f67337e5', 'greek-lemon-roasted-baby-potatoes-768x1152.png', 'image/png', 17084, 126514),
         ('84c702ec-4950-4e46-9a81-5a9068d764b5', 'salmon.png', 'image/png', 17085, 39236),
-        ('5790a919-200c-4768-aab2-7aea3d506ff8', 'fussili.png', 'image/png', 17086, 52981);
+        ('5790a919-200c-4768-aab2-7aea3d506ff8', 'fussili.png', 'image/png', 17086, 52981),
+        ('0828527f-044e-4356-b658-7ddc76f76c3b', '42.jpg', 'image/jpeg', 17094, 118681),
+        ('fbd200c6-6aad-4961-b124-da6c3ba20cec', '43.jpg', 'image/jpeg', 17095, 268654),
+        ('52b86383-9c10-4437-9f46-2485b8b33bff', '44.jpg', 'image/jpeg', 17096, 121437),
+        ('d795d847-00d1-4afa-b8ac-aa898998dd16', '45.jpg', 'image/jpeg', 17097, 87162),
+        ('0259f8fb-9dcd-405a-bab6-36f57afe3f34', '46.jpg', 'image/jpeg', 17098, 206216),
+        ('facc32e4-d173-4c00-93be-907bee04ffa4', 'rice.png', 'image/png', 17100, 29858),
+        ('396d298d-bcd8-4968-8d9d-b32eddf68907', 'bbq.png', 'image/png', 17101, 21377);

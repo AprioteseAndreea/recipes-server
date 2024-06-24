@@ -8,4 +8,5 @@ values  (1, 'Italian'),
         (8, 'Maroccan'),
         (9, 'Barbecue'),
         (5, 'French'),
-        (10, 'Chinese');
+        (10, 'Chinese'),
+        (12, 'European');
