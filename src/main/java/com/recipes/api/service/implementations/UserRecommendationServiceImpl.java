@@ -121,6 +121,7 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
 
         saveUserCartInDataBase(shoppingList, userDto);
     }
+
     private UserIngredientDto findIngredientInFridge(List<UserIngredientDto> fridgeUserIngredients, IngredientKey ingredientKey) {
         for (UserIngredientDto fridgeIngredient : fridgeUserIngredients) {
             if (fridgeIngredient.getIngredient().getId().equals(ingredientKey.getIngredientId())
@@ -276,6 +277,16 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
         if (Boolean.TRUE.equals(userDto.getWantToLearnNewSkills()) && recipeDto.getCookingLevel().ordinal() > userCookingLevel.ordinal()) {
             score += weights.get("want_to_learn_new_skills");
         }
+
+        // 8. Verificam daca reteta a fost recomandata saptamana anterioara, iar daca da, scadem 3 punct din scor
+        List<UserRecommendationDto> userRecommendations = userDto.getUserRecommendations();
+        for (UserRecommendationDto userRecommendation : userRecommendations) {
+            if ((userRecommendation.getBreakfastRecipe().getId().equals(recipeDto.getId())
+                    || userRecommendation.getLunchRecipe().getId().equals(recipeDto.getId())
+                    || userRecommendation.getDinnerRecipe().getId().equals(recipeDto.getId())) && userRecommendation.getDateTime().isAfter(LocalDateTime.now().minusWeeks(1))) {
+                score -= 3;
+            }
+        }
         return score;
     }
 
@@ -321,7 +332,6 @@ public class UserRecommendationServiceImpl implements UserRecommendationService 
                                 sameScoreRecipes.add(entry.getKey());
                             }
                         }
-
 
                         // Criteriu de departajare in cazul in care doua retete au acelasi scor - timp de preparare sau numar de calorii
                         if (Boolean.TRUE.equals(userDto.getWantToSaveTime())) {
